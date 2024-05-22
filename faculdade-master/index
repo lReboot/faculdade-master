@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cadastro</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <h1>Cadastro de Alunos</h1>
+
+        <form id="myForm">
+            <h2>Dados Pessoais</h2>
+            Nome:<input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome completo"
+                required
+            />
+            <br /><br />
+            RA:<input
+                type="number"
+                name="RA"
+                id="RA"
+                placeholder="Digite seu RA"
+                required
+            />
+            <br /><br />
+            Data de Nascimento:
+            <input
+                type="date"
+                id="date"
+                placeholder="DD/MM/AAAA"
+                required
+            /><br /><br />
+            CPF:<input
+                type="text"
+                name="CPF"
+                id="CPF"
+                placeholder="Digite seu CPF (formato: xxx.xxx.xxx-xx)"
+                required
+            />
+            <br /><br />
+            RG:<input
+                type="text"
+                name="RG"
+                id="RG"
+                placeholder="Digite seu RG"
+                required
+            />
+            <br /><br />
+            Nota no vestibular:<input
+                type="text"
+                name="nota"
+                id="nota"
+                placeholder="Digite sua nota no vestibular"
+                required
+            />
+            <br /><br />
+            Arquivo:
+            <input
+                type="file"
+                name="arquivo"
+                id="arquivo"
+                placeholder="Escolha um arquivo"
+            />
+            <br /><br />
+            Email:<input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Digite seu email"
+                required
+            />
+            <br /><br />
+            <label for="pais">Curso</label>
+            <select id="curso" name="curso" required>
+                <option value="Ciencia da computação">
+                    Ciência da computação
+                </option>
+                <option value="ADS">ADS</option>
+                <option value="Direito">Direito</option>
+                <option value="Nutrição">Nutrição</option>
+            </select>
+            <hr />
+            <h2>Endereço</h2>
+            Logadouro:
+            <input
+                type="text"
+                placeholder="Exemplo: Rua Ali Perto"
+                name="Logadouro"
+                id="Logadouro"
+                placeholder="Digite seu logradouro"
+                required
+            />
+            <br /><br />
+            Numero:
+            <input
+                type="number"
+                name="Numero"
+                id="Numero"
+                placeholder="Digite o número"
+                required
+            />
+            <br /><br />
+            Bairro:
+            <input
+                type="text"
+                name="Bairro"
+                id="Bairro"
+                placeholder="Digite seu bairro"
+                required
+            />
+            <br /><br />
+            Complemento:
+            <input
+                type="text"
+                name="Complemento"
+                id="Complemento"
+                placeholder="Digite o complemento"
+            />
+            <br /><br />
+            CEP:
+            <input
+                type="text"
+                name="CEP"
+                id="CEP"
+                placeholder="Digite seu CEP"
+                required
+            />
+            <br /><br />
+            <label for="Estado">Estado</label>
+            <select id="Estado" name="Estado" required>
+                <option value="SP">SP</option>
+                <option value="RJ">RJ</option>
+                <option value="ES">ES</option>
+                <option value="MG">MG</option>
+            </select>
+            Cidade:
+            <input
+                type="text"
+                name="Cidade"
+                id="Cidade"
+                placeholder="Digite sua cidade"
+                required
+            />
+            <br /><br />
+            <hr />
+            <label> Li e Aceito:</label>
+            <input type="checkbox" id="Lieaceito" required />
+            <a href="">Termos de uso</a><br /><br />
+            <button type="submit" id="button">Enviar</button>
+            <button type="reset" id="buttonLim">Limpar Campos</button><br />
+        </form>
+
+        <script>
+            document
+                .getElementById("myForm")
+                .addEventListener("submit", function (event) {
+                    var nome = document.getElementById("nome").value;
+                    var cpf = document.getElementById("CPF").value;
+                    var email = document.getElementById("email").value;
+
+                    // Expressão regular para validar CPF
+                    var cpfRegex = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}$/;
+
+                    // Expressão regular para validar email
+                    var emailRegex =
+                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                    // Validar nome (pode ser qualquer coisa)
+                    if (nome.trim() === "") {
+                        alert("Por favor, insira um nome válido");
+                        event.preventDefault();
+                        return false;
+                    }
+
+                    // Validar CPF
+                    if (!cpfRegex.test(cpf)) {
+                        alert(
+                            "Por favor, insira um CPF válido (formato: xxx.xxx.xxx-xx)"
+                        );
+                        event.preventDefault();
+                        return false;
+                    }
+
+                    // Validar email
+                    if (!emailRegex.test(email)) {
+                        alert("Por favor, insira um email válido");
+                        event.preventDefault();
+                        return false;
+                    }
+
+                    // Se tudo estiver válido, o formulário pode ser enviado
+                    return true;
+                });
+        </script>
+
+        <script src="script.js"></script>
+    </body>
+</html>
